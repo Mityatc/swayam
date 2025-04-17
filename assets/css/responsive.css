@@ -1,0 +1,106 @@
+/* Responsive Breakpoints */
+@media (max-width: 1199px) {
+    .aside {
+        left: -270px;
+    }
+    .main-content {
+        padding-left: 0;
+    }
+    .about-section .about-img,
+    .about-section .about-info,
+    .portfolio-section .portfolio-item,
+    .service-section .service-item,
+    .contact-section .contact-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .about-section .about-img {
+        order: 2;
+    }
+    .about-section .about-info {
+        order: 1;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .home-section .home-text h2 {
+        font-size: 40px;
+    }
+    .home-section .home-text h1 {
+        font-size: 30px;
+    }
+    .about-section .about-img {
+        margin-bottom: 30px;
+    }
+    .about-section .about-info {
+        padding-left: 0;
+    }
+    .service-section .service-item,
+    .portfolio-section .portfolio-item,
+    .contact-section .contact-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .home-section .home-text h2 {
+        font-size: 30px;
+    }
+    .home-section .home-text h1 {
+        font-size: 25px;
+    }
+    .section {
+        padding: 30px;
+    }
+    .section-title h2 {
+        font-size: 25px;
+    }
+    .service-section .service-item,
+    .portfolio-section .portfolio-item,
+    .contact-section .contact-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .about-section .about-img {
+        margin-bottom: 20px;
+    }
+    .about-section .about-info {
+        padding-left: 0;
+    }
+    .contact-section .contact-item {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .home-section .home-text h2 {
+        font-size: 25px;
+    }
+    .home-section .home-text h1 {
+        font-size: 20px;
+    }
+    .section {
+        padding: 20px;
+    }
+    .section-title h2 {
+        font-size: 20px;
+    }
+    .about-section .about-img {
+        margin-bottom: 15px;
+    }
+    .about-section .about-info {
+        padding-left: 0;
+    }
+    .contact-section .contact-item {
+        margin-bottom: 15px;
+    }
+    .portfolio-section .portfolio-filter {
+        margin-bottom: 15px;
+    }
+    .portfolio-section .filter-item {
+        margin: 0 10px;
+        font-size: 14px;
+    }
+} 
