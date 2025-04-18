@@ -2,218 +2,401 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mithilesh | Portfolio</title>
-    <meta name="description" content="I am Mithilesh, a Data Driven Problem solver and Software Developer, currently pushing limits to make technology accessible to everyone." />
-    <meta name="keywords" content="Portfolio, Developer, Software Developer, Data Science, Web Development" />
-    
-    <!-- SEO -->
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Mithilesh's Portfolio" />
-    <meta property="og:description" content="I am Mithilesh, a Data Driven Problem solver and Software Developer, currently pushing limits to make technology accessible to everyone." />
-    <meta property="og:url" content="index.html" />
-    <meta property="og:site_name" content="Mithilesh's Portfolio" />
-    <meta property="og:image:width" content="1104" />
-    <meta property="og:image:height" content="552" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@your_twitter" />
-    <meta name="twitter:site" content="@your_twitter" />
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="assets/css/skins/color-1.css" id="theme-style">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mithilesh - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+<body class="dark">
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="theme-toggle">
+                <button class="toggle-btn">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+            <div class="profile-views">
+                <i class="fas fa-eye"></i>
+                <span id="view-count">0</span>
+            </div>
+            <div class="color-theme-selector">
+                <button class="color-theme-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="color-theme-panel">
+                    <div class="color-theme-title">Theme Colors</div>
+                    <div class="color-theme-options">
+                        <div class="color-option" data-color="#ec1839"></div>
+                        <div class="color-option" data-color="#fa5b0f"></div>
+                        <div class="color-option" data-color="#37b182"></div>
+                        <div class="color-option" data-color="#1854b4"></div>
+                        <div class="color-option" data-color="#f021b2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="assets/profile.jpg" alt="Mithilesh Tandon" class="main-image">
+                    <img src="assets/profile-hover.jpg" alt="Mithilesh Tandon" class="hover-image">
+                </div>
+                <h1 class="name">Mithilesh Tandon</h1>
+                <p class="role">Full Stack Developer</p>
+            </div>
+            <nav class="navigation">
+                <button class="nav-btn hover-in-shadow active">Home</button>
+                <button class="nav-btn hover-in-shadow">About Me</button>
+                <button class="nav-btn hover-in-shadow">Projects</button>
+                <button class="nav-btn hover-in-shadow">Contact</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="hero">
+                <h2 class="greeting"></h2>
+                <div class="status-badge">
+                    <span class="status-icon">🚀</span>
+                    <span class="status-text">Currently Building...</span>
+                </div>
+                <h1 class="main-title">
+                <span class="typewriter-text">MITHILESH TANDON</span>
+                </h1>
+                <p class="subtitle">
+                    <span class="typewriter-text">Just a dev out here making the web look lowkey fire 🔥</span>
+                </p>
+            </section>
+
+            <section class="skills-card">
+                <h2>Skills</h2>
+                <div class="card-content">
+                    <div class="skills-grid">
+                        <span class="skill-tag hover-in-shadow">Express JS</span>
+                        <span class="skill-tag hover-in-shadow">C++</span>
+                        <span class="skill-tag hover-in-shadow">REACT JS</span>
+                        <span class="skill-tag hover-in-shadow">JAVASCRIPT</span>
+                        <span class="skill-tag hover-in-shadow">Tailwind CSS</span>
+                        <span class="skill-tag hover-in-shadow">MongoDB</span>
+                        <span class="skill-tag hover-in-shadow">MYSQL</span>
+                        <span class="skill-tag hover-in-shadow">NODE JS</span>
+                        <span class="skill-tag hover-in-shadow">Python</span>
+                        <span class="skill-tag hover-in-shadow">CSS</span>
+                        <span class="skill-tag hover-in-shadow">SQL</span>
+                        <span class="skill-tag hover-in-shadow">FIGMA</span>
+                        <span class="skill-tag hover-in-shadow">GIT</span>
+                        <span class="skill-tag hover-in-shadow">POSTMAN</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about-me-section" class="about-me-card" style="display: none;">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="specialty-points">
+                        <div class="specialty-card">
+                            <div class="specialty-icon"></div>
+                            <h3>Team Player & Problem Solver</h3>
+                            <ul>
+                                <li>Collaborated in hackathons and team projects (communication + coordination)</li>
+                                <li>Thrive in solving logic-based problems and improving user experience</li>
+                                <li>Love converting vague ideas into working prototypes</li>
+                            </ul>
+                        </div>
+                        <div class="specialty-card">
+                            <div class="specialty-icon"></div>
+                            <h3>Learning Mindset</h3>
+                            <ul>
+                                <li>Continuously upskilling — from DSA to backend to design</li>
+                                <li>Open to feedback and dedicated to self-growth</li>
+                                <li>Experimental mindset — always testing, tweaking, and improving</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="about-text">
+                        <p>I am a passionate Full Stack Developer with a strong foundation in computer science and engineering. My journey in technology is driven by curiosity and a desire to create innovative solutions. I actively participate in hackathons and coding competitions, constantly pushing my boundaries to learn and grow.</p>
+                    </div>
+                    
+                    <div class="photo-gallery">
+                        <h3>My Journey in Photos</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="assets/hackathon1.jpg" alt="Hackathon Achievement 1" class="hover-in-shadow">
+                                <div class="gallery-caption">First Place - Tech Innovation Hackathon</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="assets/hackathon2.jpg" alt="Hackathon Achievement 2" class="hover-in-shadow">
+                                <div class="gallery-caption">Best Innovation Award</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="assets/hackathon3.jpg" alt="Hackathon Achievement 3" class="hover-in-shadow">
+                                <div class="gallery-caption">Team Collaboration</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="assets/hackathon4.jpg" alt="Hackathon Achievement 4" class="hover-in-shadow">
+                                <div class="gallery-caption">Innovation Challenge Winner</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="assets/hackathon5.jpg" alt="Hackathon Achievement 5" class="hover-in-shadow">
+                                <div class="gallery-caption">Code Sprint Champion</div>
+                            </div>
+                            
+                            <div class="gallery-item">
+                                <img src="assets/hackathon7.jpg" alt="Hackathon Achievement 7" class="hover-in-shadow">
+                                <div class="gallery-caption">Innovation Summit</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="education-timeline">
+                        <h3>Educational Journey</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Thakur College of Engineering & Technology</h3>
+                                    <p class="degree">B. Tech/BE (Bachelor of Technology/Bachelor of Engineering) Computer Science and Engineering</p>
+                                    <p class="dates">2022 - Present</p>
+                                    <p class="type">Full-time</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Shri T.P. Bhatia Junior College of Science</h3>
+                                    <p class="degree">Intermediate Commerce</p>
+                                    <p class="dates">2019 - 2021</p>
+                                    <p class="type">Full-time</p>
+                                    <p class="percentage">Percentage: 86%</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>M.K.E.S. English High School</h3>
+                                    <p class="degree">High school</p>
+                                    <p class="dates">2012 - 2019</p>
+                                    <p class="percentage">Percentage: 83%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="github-activity-card">
+                <h2>GitHub Activity</h2>
+                <div class="card-content">
+                    <div class="contributions-graph">
+                        <img id="contributions-chart" alt="GitHub Contributions" 
+                             src="https://ghchart.rshah.org/Mityatc" 
+                             class="hover-in-shadow">
+                    </div>
+                    <div class="github-link">
+                        <a href="https://github.com/Mityatc" target="_blank" class="hover-in-shadow">
+                            <i class="fab fa-github"></i> View GitHub Profile
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="leetcode-activity-card">
+                <h2>LeetCode Activity</h2>
+                <div class="card-content">
+                    <div class="leetcode-graph">
+                        <img id="leetcode-chart" alt="LeetCode Submissions" 
+                             src="https://leetcode.card.workers.dev/?username=Mityatc&theme=light&font=poppins&extension=null&border=0" 
+                             class="hover-in-shadow">
+                    </div>
+                    <div class="leetcode-link">
+                        <a href="https://leetcode.com/Mityatc" target="_blank" class="hover-in-shadow">
+                            <i class="fas fa-code"></i> View LeetCode Profile
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="download-section">
+                <a href="https://drive.google.com/file/d/1IX81WkB3RMWr4Fmsv0v5nOft0c3AV9fJ/view?usp=sharing" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="download-btn hover-in-shadow">
+                    Resume 
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="mailto:your.email@example.com" class="social-btn hover-in-shadow"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com" class="social-btn hover-in-shadow"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/Mityatc" class="social-btn hover-in-shadow"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/mithilesh__tandon/" class="social-btn hover-in-shadow"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=%2B916201977181&text&type=phone_number&app_absent=0" class="social-btn hover-in-shadow"><i class="fab fa-whatsapp"></i></a>
+            </div>
+
+            <!-- Projects Section -->
+            <section id="projects-section" class="projects-section" style="display: none;">
+                <div class="projects-card">
+                    <h2>My Projects</h2>
+                    <div class="projects-timeline">
+                        <!-- Project 1 -->
+                        <div class="project-item">
+                            <div class="project-content">
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Java</span>
+                                    <span class="tech-tag">Spring Boot</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                </div>
+                                <h3>Publicity Management</h3>
+                                <p class="project-description">As part of a cultural fest project, I developed the Publicity Management system using Java Spring Boot and PostgreSQL. This system efficiently manages publicity-related tasks and integrates with other project components like events, sponsors, and venues. I focused on designing the database and creating essential backend endpoints, establishing a solid foundation for the system's future integration with the main platform.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Mityatc/publicity-management-fsd" class="project-link github" target="_blank">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="project-item">
+                            <div class="project-content">
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">NLP</span>
+                                    <span class="tech-tag">AI/ML</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                </div>
+                                <h3>LawBot - AI Legal Assistant</h3>
+                                <p class="project-description">Developed an AI-powered legal assistant that helps users understand legal concepts and procedures. The bot uses natural language processing to provide accurate legal information and guidance. Features include legal document analysis, case law references, and personalized legal advice based on user queries. Built using advanced AI models and integrated with legal databases for comprehensive assistance.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Mityatc/lawbot" class="project-link github" target="_blank">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                    <a href="https://lawbot-demo.vercel.app" class="project-link live" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="project-item">
+                            <div class="project-content">
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Machine Learning</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Django</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                </div>
+                                <h3>TheLawyerRecommender</h3>
+                                <p class="project-description">Contributed to LegalMitra, a large-scale legal platform, by developing the TheLawyerRecommender feature. This tool intelligently matches users with the right lawyers based on their legal needs. Using algorithms and possibly machine learning techniques, this feature analyzes user input and provides personalized recommendations, enhancing the overall user experience.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Mityatc/LawyerRecommender" class="project-link github" target="_blank">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="project-item">
+                            <div class="project-content">
+                                <div class="tech-stack">
+                                    <span class="tech-tag">WebSocket</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                </div>
+                                <h3>Gap-Shap (Chat Application)</h3>
+                                <p class="project-description">Created a real-time chat application that allows users to interact seamlessly. The app integrates WebSockets for real-time messaging and includes user authentication features for a smooth communication experience. This project demonstrates my ability to build interactive, real-time applications with a focus on user experience and scalability.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Mityatc/gap-shap" class="project-link github" target="_blank">
+                                        <i class="fab fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5 -->
+                        <div class="project-item">
+                            <div class="project-content">
+                                <div class="tech-stack">
+                                    <span class="tech-tag">MERN Stack</span>
+                                    <span class="tech-tag">JWT</span>
+                                    <span class="tech-tag">Redux</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                </div>
+                                <h3>MERN Authentication System</h3>
+                                <p class="project-description">Developed a full-stack authentication system using MongoDB, Express.js, React, and Node.js. The system includes essential features such as user registration, login, and secure, protected routes. Through this project, I gained a deep understanding of the MERN stack and full-stack application development, handling both front-end routing and backend API integration without relying on external source code.</p>
+                                <div class="project-links">
+                                    <a href="https://prodigy-fs-01-puce.vercel.app" class="project-link live" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i> Live Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact-section" class="contact-section" style="display: none;">
+                <div class="contact-card">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div class="contact-text">
+                                    <h3>Email</h3>
+                                    <a href="mailto:mithileshtandon@gmail.com" class="email-link">mithileshtandon@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div class="contact-text">
+                                    <h3>Phone</h3>
+                                    <p>+91 6201977181</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="contact-text">
+                                    <h3>Location</h3>
+                                    <p>Mumbai, Maharashtra, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Your Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Your Email</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" required>
+                                <label for="subject">Subject</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" required></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+                            <button type="submit" class="submit-btn hover-in-shadow">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div id="firefly-container"></div>
     </div>
-
-    <!-- Header -->
-    <div class="header">
-        <div class="container">
-            <div class="row justify-content-between">
-                <a href="index.html" class="link-item btn-1 outer-shadow hover-in-shadow">Home</a>
-                <div class="header-right">
-                    <button class="theme-toggle-btn outer-shadow hover-in-shadow">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <div class="hamburger-btn outer-shadow hover-in-shadow">
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation Menu -->
-    <nav class="nav-menu">
-        <div class="close-nav-menu outer-shadow hover-in-shadow">&times;</div>
-        <div class="nav-menu-inner">
-            <ul>
-                <li><a href="#home" class="link-item inner-shadow active">home</a></li>
-                <li><a href="#about" class="link-item outer-shadow hover-in-shadow">about</a></li>
-                <li><a href="#services" class="link-item outer-shadow hover-in-shadow">Service</a></li>
-                <li><a href="#portfolio" class="link-item outer-shadow hover-in-shadow">portfolio</a></li>
-                <li><a href="#testimonial" class="link-item outer-shadow hover-in-shadow">EBook</a></li>
-                <li><a href="#contact" class="link-item outer-shadow hover-in-shadow">contact</a></li>
-            </ul>
-        </div>
-        <p class="copyright-text">&copy; 2024 Mithilesh</p>
-    </nav>
-    <div class="fade-out-effect"></div>
-
-    <!-- Home Section -->
-    <section class="section home-section active" id="home">
-        <div class="effect-wrap">
-            <div class="effect effect-1"></div>
-            <div class="effect effect-2">
-                <div></div><div></div><div></div><div></div><div></div>
-                <div></div><div></div><div></div><div></div><div></div>
-            </div>
-            <div class="effect effect-3"></div>
-            <div class="effect effect-4"></div>
-            <div class="effect effect-5">
-                <div></div><div></div><div></div><div></div><div></div>
-            </div>
-        </div>
-        
-        <div class="container">
-            <div class="row full-screen align-items-center">
-                <div class="home-text">
-                    <p>Hello</p>
-                    <h2>I'm Mithilesh</h2>
-                    <h1>Data Driven Problem Solver</h1>
-                    <a href="#about" class="link-item btn-1 outer-shadow hover-in-shadow">More About Me</a>
-                    <a href="#services" class="link-item btn-1 outer-shadow hover-in-shadow">Skills</a>
-                    <a href="#portfolio" class="link-item btn-1 outer-shadow hover-in-shadow">Portfolio</a>
-                    <a href="#testimonial" class="link-item btn-1 outer-shadow hover-in-shadow">EBook</a>
-                    <a href="#contact" class="link-item btn-1 outer-shadow hover-in-shadow">Contact</a>
-                </div>
-                <div class="home-img">
-                    <div class="img-box inner-shadow">
-                        <img src="assets/profile.jpg" class="outer-shadow" alt="Mithilesh's Profile">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about-section" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="section-title">
-                    <h2 data-heading="main info">About Me</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="about-img">
-                    <div class="img-box inner-shadow">
-                        <img src="assets/profile.jpg" alt="Mithilesh's Profile" class="outer-shadow">
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="about-info">
-                    <p>I am <span>Mithilesh</span>, a passionate Software Developer with expertise in Data Science and Web Development. I am currently pursuing my education in Computer Science.</p>
-                    <p>I enjoy exploring and sharing knowledge about technology, data analysis, and software development. I love working in communities and conducting webinars on various tech topics.</p>
-                    <p>I believe in providing quality content to the right people at the right time. I'm dedicated to making technology more accessible and understandable for everyone.</p>
-                    <p><span>Email</span> : <a href="mailto:your@email.com">your@email.com</a></p>
-                    <p><span>Appointment</span> : <a href="#">Book a Meeting</a></p>
-                    <p><span>Work Experience</span> : X Years</p>
-                    <a href="#" class="btn-1 outer-shadow hover-in-shadow">Download CV</a>
-                    <a href="#contact" class="link-item btn-1 outer-shadow hover-in-shadow">Hire Me</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section service-section" id="services">
-        <div class="container">
-            <div class="row">
-                <div class="section-title">
-                    <h2 data-heading="Services">What I do</h2>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Service items will be added here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="section portfolio-section" id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="section-title">
-                    <h2 data-heading="portfolio">Latest Works</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="portfolio-filter">
-                    <span class="filter-item outer-shadow active" data-target="all">all</span>
-                    <span class="filter-item" data-target="web-application">Websites</span>
-                    <span class="filter-item" data-target="mobile-app">Data Science</span>
-                    <span class="filter-item" data-target="speaking">Open Source</span>
-                </div>
-            </div>
-            <div class="row portfolio-items">
-                <!-- Portfolio items will be added here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="section-title">
-                    <h2 data-heading="contact">Get In Touch</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="contact-item">
-                    <div class="contact-item-inner outer-shadow">
-                        <i class="fas fa-phone"></i>
-                        <span>Talk to me/Mentoring</span>
-                        <p>Book Appointment 👇</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-item-inner outer-shadow">
-                        <i class="fas fa-envelope"></i>
-                        <span>email</span>
-                        <p>your@email.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-item-inner outer-shadow">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>address</span>
-                        <p>Your Location</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="assets/js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html> 
