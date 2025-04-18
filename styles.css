@@ -56,6 +56,7 @@ body.dark {
     text-decoration: none;
 }
 
+/* Base styles */
 body {
     line-height: 1.5;
     font-size: 16px;
@@ -63,10 +64,28 @@ body {
     background-color: var(--bg-black-900);
     color: var(--text-black-900);
     transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 ::before, ::after {
     box-sizing: border-box;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Theme Controls */
@@ -159,9 +178,11 @@ body.dark .toggle-btn i.fa-sun {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    overflow-y: auto;
     width: 100%;
     margin: 0;
     padding: 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Sidebar Styles */
@@ -638,6 +659,8 @@ body.dark .toggle-btn i.fa-sun {
         overflow-x: hidden;
         width: 100%;
         position: relative;
+        -webkit-text-size-adjust: 100%;
+        touch-action: manipulation;
     }
 
     .container {
@@ -647,6 +670,16 @@ body.dark .toggle-btn i.fa-sun {
         overflow-x: hidden;
         padding: 0;
         margin: 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 1rem;
+        min-height: auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .sidebar {
@@ -661,124 +694,68 @@ body.dark .toggle-btn i.fa-sun {
         background-color: var(--bg-black-100);
     }
 
-    .main-content {
-        width: 100%;
-        margin-left: 0;
-        padding: 1rem;
-        min-height: auto;
-        overflow-y: visible;
-    }
-
-    .profile-section {
-        padding: 1rem;
-        margin: 0;
-    }
-
-    .profile-image {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 1rem;
-    }
-
-    .name {
-        font-size: 1.5rem;
-        margin: 0.5rem 0;
-    }
-
-    .role {
-        font-size: 0.9rem;
-    }
-
-    .navigation {
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-        margin: 1rem 0;
-    }
-
-    .nav-btn {
+    /* Improve touch targets for all mobile devices */
+    .nav-btn,
+    .social-btn,
+    .project-link,
+    .download-btn {
+        min-height: 44px;
+        min-width: 44px;
         padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-        margin: 0.2rem;
+        touch-action: manipulation;
     }
 
-    .hero {
-        padding: 2rem 1rem;
-        text-align: center;
-        min-height: auto;
-    }
-
+    /* Adjust text sizes for better readability */
     .main-title {
-        font-size: clamp(1.3rem, 4vw, 2rem);
-        padding: 0 0.5rem;
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        line-height: 1.3;
     }
 
     .subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        line-height: 1.4;
     }
 
-    .skills-card {
-        margin: 1rem;
-        padding: 1.5rem;
+    /* Improve form elements for all mobile devices */
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px;
+        padding: 12px;
+        -webkit-appearance: none;
+        appearance: none;
     }
 
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 0.8rem;
+    /* Fix for Android Chrome */
+    input,
+    textarea,
+    select {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 0;
     }
 
-    .skill-tag {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
+    /* Improve scrolling for all mobile devices */
+    .contributions-graph,
+    .leetcode-graph {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        -ms-overflow-style: none;
     }
 
-    .social-links {
-        margin: 1rem 0;
-        gap: 1rem;
+    .contributions-graph::-webkit-scrollbar,
+    .leetcode-graph::-webkit-scrollbar {
+        height: 6px;
     }
 
-    .social-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-
-    .download-section {
-        margin: 1rem 0;
-    }
-
-    .download-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-
-    /* Fix for fixed elements */
-    .profile-views {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 1000;
-    }
-
-    .theme-toggle {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 1000;
-    }
-
-    .color-theme-selector {
-        position: fixed;
-        top: 50px;
-        left: 10px;
-        z-index: 1000;
+    /* Fix for Android Chrome scrolling */
+    .main-content,
+    .container {
+        overscroll-behavior-y: contain;
     }
 }
 
-/* Small screen optimizations */
+/* Small screen optimizations for all devices */
 @media (max-width: 480px) {
     .container {
         padding: 0;
@@ -798,44 +775,30 @@ body.dark .toggle-btn i.fa-sun {
     }
 
     .name {
-        font-size: 1.3rem;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
     }
 
     .role {
-        font-size: 0.8rem;
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     }
 
     .nav-btn {
         padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .main-title {
-        font-size: clamp(1.1rem, 3.5vw, 1.8rem);
-        padding: 0 0.3rem;
-    }
-
-    .subtitle {
         font-size: 0.9rem;
     }
 
     .skills-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
     }
 
     .skill-tag {
         padding: 0.5rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
-    .social-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
 
-/* Fix for iOS Safari 100vh issue */
+/* Fix for Android Chrome viewport height */
 @supports (-webkit-touch-callout: none) {
     .container {
         min-height: -webkit-fill-available;
@@ -844,36 +807,53 @@ body.dark .toggle-btn i.fa-sun {
     .main-content {
         min-height: -webkit-fill-available;
     }
+}
 
-    body {
-        min-height: -webkit-fill-available;
+/* Fix for Android Chrome scrolling */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .container {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
-/* Landscape mode adjustments */
+/* Landscape mode adjustments for all devices */
 @media (max-height: 500px) and (orientation: landscape) {
+    .container {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .main-content {
+        height: auto;
+        min-height: 100vh;
+    }
+
     .sidebar {
         height: auto;
-        padding: 1rem;
+        padding: 0.5rem;
     }
+}
 
-    .profile-image {
-        width: 80px;
-        height: 80px;
+/* Fix for Android Chrome input zoom */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
     }
+}
 
-    .navigation {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
+/* Fix for Android Chrome button highlight */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
 
-    .nav-btn {
-        padding: 0.5rem 1rem;
-    }
-
-    .main-title {
-        font-size: clamp(1rem, 3vw, 1.5rem);
-    }
+/* Fix for Android Chrome scrolling momentum */
+.container,
+.main-content {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
 }
 
 /* Additional Responsive Breakpoints */
