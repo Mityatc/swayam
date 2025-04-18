@@ -82,7 +82,7 @@ body {
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 1000;
 }
 
 .theme-toggle {
@@ -153,10 +153,14 @@ body.dark .toggle-btn i.fa-sun {
     display: none;
 }
 
-/* Container */
+/* Base Container Styles */
 .container {
     display: flex;
     min-height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Sidebar Styles */
@@ -341,6 +345,8 @@ body.dark .toggle-btn i.fa-sun {
     align-items: center;
     background-color: var(--bg-black-900);
     transition: all 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .main-content.dark {
@@ -612,10 +618,14 @@ body.dark .toggle-btn i.fa-sun {
     opacity: 0.1;
 }
 
-/* Responsive Design */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .sidebar {
@@ -630,17 +640,59 @@ body.dark .toggle-btn i.fa-sun {
         margin-left: 0;
         padding: 1rem;
         width: 100%;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
-    .profile-image {
-        width: 120px;
-        height: 120px;
+    body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: auto;
+        min-height: 100vh;
     }
 
-    .name {
-        font-size: 1.5rem;
-        white-space: normal;
-        word-wrap: break-word;
+    html {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: auto;
+    }
+
+    .profile-views {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+
+    .color-theme-selector {
+        position: fixed;
+        top: 50px;
+        left: 10px;
+        z-index: 1000;
+    }
+
+    .navigation {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .nav-btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+        margin: 0.2rem;
     }
 
     .main-title {
@@ -655,58 +707,8 @@ body.dark .toggle-btn i.fa-sun {
         padding: 0 1rem;
     }
 
-    .navigation {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .nav-btn {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-        margin: 0.2rem;
-    }
-
-    .social-links {
-        gap: 1rem;
-    }
-
-    .social-btn {
-        width: 40px;
-        height: 40px;
-    }
-
-    .theme-toggle,
-    .color-theme-selector,
-    .profile-views {
-        position: fixed;
-        z-index: 1000;
-    }
-
-    .theme-toggle {
-        top: 20px;
-        right: 20px;
-    }
-
-    .color-theme-selector {
-        top: 70px;
-        right: 20px;
-    }
-
-    .profile-views {
-        top: 20px;
-        left: 20px;
-    }
-
-    /* Adjust card layouts for mobile */
-    .job-card, .skills-card {
-        padding: 1.5rem;
-        margin: 1rem 0;
-    }
-
     .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 0.8rem;
     }
 
@@ -715,33 +717,60 @@ body.dark .toggle-btn i.fa-sun {
         font-size: 0.8rem;
     }
 
-    /* Adjust GitHub and LeetCode cards */
-    .github-activity-card,
-    .leetcode-activity-card {
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
         padding: 1.5rem;
     }
 
-    .github-stats,
-    .leetcode-graph {
-        margin: 1rem 0;
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
     }
 
-    /* Adjust cursor trail for mobile */
-    .cursor-trail {
-        width: 12px;
-        height: 12px;
-        box-shadow: 0 0 15px 6px var(--skin-color), 0 0 2px 2px #fff inset;
+    .projects-timeline::before {
+        left: 20px;
+    }
+
+    .project-item::before {
+        left: 20px;
+    }
+
+    .project-content {
+        margin-left: 40px;
+        width: calc(100% - 40px);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .specialty-points {
+        grid-template-columns: 1fr;
     }
 }
 
-/* Additional breakpoint for very small devices */
+/* Additional Mobile Optimizations */
 @media (max-width: 480px) {
-    .main-title {
-        font-size: 1.8rem;
+    .profile-views {
+        top: 5px;
+        right: 5px;
+        padding: 4px 8px;
+        font-size: 0.8rem;
     }
 
-    .subtitle {
-        font-size: 0.9rem;
+    .theme-toggle {
+        top: 5px;
+        left: 5px;
+    }
+
+    .color-theme-selector {
+        top: 40px;
+        left: 5px;
     }
 
     .nav-btn {
@@ -749,18 +778,45 @@ body.dark .toggle-btn i.fa-sun {
         font-size: 0.8rem;
     }
 
-    .profile-image {
-        width: 100px;
-        height: 100px;
-    }
-
     .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
 
-    .social-btn {
-        width: 35px;
-        height: 35px;
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        padding: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        min-height: -webkit-fill-available;
+        height: auto;
+    }
+    
+    .main-content {
+        min-height: -webkit-fill-available;
+        height: auto;
+    }
+
+    body {
+        min-height: -webkit-fill-available;
+        height: auto;
+    }
+
+    html {
+        min-height: -webkit-fill-available;
+        height: auto;
     }
 }
 
