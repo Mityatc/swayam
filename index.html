@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Mithilesh - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -398,5 +401,14 @@
         <div id="firefly-container"></div>
     </div>
     <script src="script.js"></script>
+    <script>
+        // Add touch event handling
+        document.addEventListener('touchstart', function() {}, true);
+        
+        // Prevent double-tap zoom on iOS
+        document.addEventListener('touchend', function(event) {
+            event.preventDefault();
+        }, { passive: false });
+    </script>
 </body>
 </html> 
