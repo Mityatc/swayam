@@ -158,9 +158,10 @@ body.dark .toggle-btn i.fa-sun {
     display: flex;
     min-height: 100vh;
     position: relative;
-    overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Sidebar Styles */
@@ -176,6 +177,8 @@ body.dark .toggle-btn i.fa-sun {
     align-items: center;
     z-index: 10;
     transition: all 0.3s ease;
+    left: 0;
+    top: 0;
 }
 
 .sidebar.dark {
@@ -347,6 +350,7 @@ body.dark .toggle-btn i.fa-sun {
     transition: all 0.3s ease;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    width: calc(100% - 400px);
 }
 
 .main-content.dark {
@@ -385,23 +389,33 @@ body.dark .toggle-btn i.fa-sun {
     100% { transform: rotate(360deg); }
 }
 
+/* Hero Section Name Responsiveness */
 .main-title {
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--text-black-900);
     position: relative;
     display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.2;
+    padding: 0 1rem;
 }
 
-.main-title::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background-color: var(--skin-color);
+.main-title .typewriter-text {
+    font-size: inherit;
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid var(--skin-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 0.75s step-end infinite;
 }
 
 .subtitle {
@@ -620,13 +634,19 @@ body.dark .toggle-btn i.fa-sun {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
     .container {
         flex-direction: column;
-        height: auto;
+        width: 100%;
         min-height: 100vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 2rem;
+        overflow-x: hidden;
+        padding: 0;
+        margin: 0;
     }
 
     .sidebar {
@@ -634,41 +654,112 @@ body.dark .toggle-btn i.fa-sun {
         height: auto;
         position: relative;
         padding: 1rem;
-        margin-bottom: 1rem;
+        margin: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: var(--bg-black-100);
     }
 
     .main-content {
+        width: 100%;
         margin-left: 0;
         padding: 1rem;
+        min-height: auto;
+        overflow-y: visible;
+    }
+
+    .profile-section {
+        padding: 1rem;
+        margin: 0;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1rem;
+    }
+
+    .name {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .role {
+        font-size: 0.9rem;
+    }
+
+    .navigation {
         width: 100%;
-        height: auto;
-        min-height: 100vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 1rem 0;
     }
 
-    body {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        height: auto;
-        min-height: 100vh;
+    .nav-btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+        margin: 0.2rem;
     }
 
-    html {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        height: auto;
+    .hero {
+        padding: 2rem 1rem;
+        text-align: center;
+        min-height: auto;
     }
 
+    .main-title {
+        font-size: clamp(1.3rem, 4vw, 2rem);
+        padding: 0 0.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .skills-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .skill-tag {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .social-links {
+        margin: 1rem 0;
+        gap: 1rem;
+    }
+
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .download-section {
+        margin: 1rem 0;
+    }
+
+    .download-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Fix for fixed elements */
     .profile-views {
         position: fixed;
         top: 10px;
         right: 10px;
-        padding: 6px 10px;
-        font-size: 0.9rem;
         z-index: 1000;
     }
 
@@ -685,145 +776,77 @@ body.dark .toggle-btn i.fa-sun {
         left: 10px;
         z-index: 1000;
     }
+}
 
-    .navigation {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
+/* Small screen optimizations */
+@media (max-width: 480px) {
+    .container {
+        padding: 0;
+    }
+
+    .main-content {
         padding: 0.5rem;
-        width: 100%;
+    }
+
+    .sidebar {
+        padding: 0.5rem;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .name {
+        font-size: 1.3rem;
+    }
+
+    .role {
+        font-size: 0.8rem;
     }
 
     .nav-btn {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-        margin: 0.2rem;
-        width: auto;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
     }
 
     .main-title {
-        font-size: 2rem;
-        text-align: center;
-        width: 100%;
+        font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+        padding: 0 0.3rem;
     }
 
     .subtitle {
-        font-size: 1rem;
-        text-align: center;
-        padding: 0 1rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 0.8rem;
-    }
-
-    .skill-tag {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.8rem 1rem;
-        font-size: 1rem;
-    }
-
-    .projects-timeline::before {
-        left: 20px;
-    }
-
-    .project-item::before {
-        left: 20px;
-    }
-
-    .project-content {
-        margin-left: 40px;
-        width: calc(100% - 40px);
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1rem;
-    }
-
-    .specialty-points {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Additional Mobile Optimizations */
-@media (max-width: 480px) {
-    .profile-views {
-        top: 5px;
-        right: 5px;
-        padding: 4px 8px;
-        font-size: 0.8rem;
-    }
-
-    .theme-toggle {
-        top: 5px;
-        left: 5px;
-    }
-
-    .color-theme-selector {
-        top: 40px;
-        left: 5px;
-    }
-
-    .nav-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     .skills-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
 
-    .gallery-grid {
-        grid-template-columns: 1fr;
+    .skill-tag {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
     }
 
-    .contact-form {
-        padding: 1rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.6rem 0.8rem;
+    .social-btn {
+        width: 35px;
+        height: 35px;
         font-size: 0.9rem;
     }
 }
 
-/* Fix for iOS Safari */
+/* Fix for iOS Safari 100vh issue */
 @supports (-webkit-touch-callout: none) {
     .container {
         min-height: -webkit-fill-available;
-        height: auto;
     }
     
     .main-content {
         min-height: -webkit-fill-available;
-        height: auto;
     }
 
     body {
         min-height: -webkit-fill-available;
-        height: auto;
-    }
-
-    html {
-        min-height: -webkit-fill-available;
-        height: auto;
     }
 }
 
@@ -846,6 +869,10 @@ body.dark .toggle-btn i.fa-sun {
 
     .nav-btn {
         padding: 0.5rem 1rem;
+    }
+
+    .main-title {
+        font-size: clamp(1rem, 3vw, 1.5rem);
     }
 }
 
@@ -1199,10 +1226,16 @@ body[data-theme-color="#f021b2"] {
 }
 
 .main-title .typewriter-text {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--text-black-900);
+    font-size: inherit;
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid var(--skin-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 0.75s step-end infinite;
 }
 
 .subtitle .typewriter-text {
@@ -1233,7 +1266,8 @@ body[data-theme-color="#f021b2"] {
 }
 
 /* GitHub Activity Card Styles */
-.github-activity-card {
+.github-activity-card,
+.leetcode-activity-card {
     background-color: var(--bg-black-100);
     border-radius: 12px;
     padding: 2rem;
@@ -1245,7 +1279,8 @@ body[data-theme-color="#f021b2"] {
     overflow: hidden;
 }
 
-.github-activity-card h2 {
+.github-activity-card h2,
+.leetcode-activity-card h2 {
     font-size: 1.5rem;
     color: var(--text-black-900);
     margin-bottom: 1.5rem;
@@ -1253,7 +1288,8 @@ body[data-theme-color="#f021b2"] {
     display: inline-block;
 }
 
-.github-activity-card h2::after {
+.github-activity-card h2::after,
+.leetcode-activity-card h2::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -1263,62 +1299,52 @@ body[data-theme-color="#f021b2"] {
     background-color: var(--skin-color);
 }
 
-.github-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.stat-item {
-    text-align: center;
+.contributions-graph,
+.leetcode-graph {
+    margin: 1rem 0;
     padding: 1rem;
     background-color: var(--bg-black-50);
     border-radius: 10px;
     box-shadow: var(--outer-shadow);
-    transition: all 0.3s ease;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--skin-color) var(--bg-black-50);
 }
 
-.stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--inner-shadow);
+.contributions-graph::-webkit-scrollbar,
+.leetcode-graph::-webkit-scrollbar {
+    height: 8px;
 }
 
-.stat-value {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--skin-color);
-    margin-bottom: 0.5rem;
+.contributions-graph::-webkit-scrollbar-track,
+.leetcode-graph::-webkit-scrollbar-track {
+    background: var(--bg-black-50);
+    border-radius: 4px;
 }
 
-.stat-label {
-    font-size: 0.9rem;
-    color: var(--text-black-700);
+.contributions-graph::-webkit-scrollbar-thumb,
+.leetcode-graph::-webkit-scrollbar-thumb {
+    background-color: var(--skin-color);
+    border-radius: 4px;
 }
 
-.contributions-graph {
-    margin: 2rem 0;
-    padding: 1rem;
-    background-color: var(--bg-black-50);
-    border-radius: 10px;
-    box-shadow: var(--outer-shadow);
-    overflow: hidden;
-}
-
-.contributions-graph img {
-    width: 100%;
+.contributions-graph img,
+.leetcode-graph img {
+    min-width: 800px;
     height: auto;
     display: block;
     transition: all 0.3s ease;
 }
 
-.github-link {
+.github-link,
+.leetcode-link {
     text-align: center;
     margin-top: 1.5rem;
 }
 
-.github-link a {
+.github-link a,
+.leetcode-link a {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -1332,26 +1358,31 @@ body[data-theme-color="#f021b2"] {
     box-shadow: var(--outer-shadow);
 }
 
-.github-link a:hover {
+.github-link a:hover,
+.leetcode-link a:hover {
     color: var(--skin-color);
     box-shadow: var(--inner-shadow);
     transform: translateY(-2px);
 }
 
-.github-link i {
+.github-link i,
+.leetcode-link i {
     font-size: 1.2rem;
 }
 
 /* Dark theme specific styles for GitHub activity */
-body.dark .github-activity-card {
+body.dark .github-activity-card,
+body.dark .leetcode-activity-card {
     background-color: var(--bg-black-100);
 }
 
-body.dark .stat-item {
+body.dark .contributions-graph,
+body.dark .leetcode-graph {
     background-color: var(--bg-black-900);
 }
 
-body.dark .contributions-graph {
+body.dark .github-link a,
+body.dark .leetcode-link a {
     background-color: var(--bg-black-900);
 }
 
@@ -1407,20 +1438,32 @@ body.dark .contributions-graph {
     background-color: var(--bg-black-50);
     border-radius: 10px;
     box-shadow: var(--outer-shadow);
-    overflow: hidden;
-    transition: all 0.3s ease;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--skin-color) var(--bg-black-50);
+    position: relative;
 }
 
-.leetcode-graph:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--inner-shadow);
+.leetcode-graph::-webkit-scrollbar {
+    height: 8px;
+}
+
+.leetcode-graph::-webkit-scrollbar-track {
+    background: var(--bg-black-50);
+    border-radius: 4px;
+}
+
+.leetcode-graph::-webkit-scrollbar-thumb {
+    background-color: var(--skin-color);
+    border-radius: 4px;
 }
 
 .leetcode-graph img {
-    width: 100%;
+    min-width: 800px;
     height: auto;
     display: block;
-    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .leetcode-link {
@@ -1461,14 +1504,45 @@ body.dark .leetcode-graph {
     background-color: var(--bg-black-900);
 }
 
-@media (max-width: 768px) {
-    .leetcode-activity-card {
-        padding: 1.5rem;
+@media (max-width: 727px) {
+    .main-title {
+        font-size: clamp(1.3rem, 4vw, 2rem);
+        padding: 0 0.5rem;
     }
 
     .leetcode-graph {
         margin: 0.5rem 0;
         padding: 0.5rem;
+    }
+
+    .leetcode-graph img {
+        min-width: 600px;
+    }
+
+    .leetcode-activity-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+        padding: 0 0.3rem;
+    }
+
+    .leetcode-graph img {
+        min-width: 500px;
+    }
+
+    .leetcode-activity-card {
+        padding: 1rem;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .main-title {
+        font-size: clamp(1rem, 3vw, 1.5rem);
     }
 }
 
@@ -2892,5 +2966,240 @@ body.dark .email-link:hover {
 
     body {
         min-height: -webkit-fill-available;
+    }
+}
+
+/* Base styles for very small screens */
+@media (max-width: 727px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1rem;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--bg-black-100);
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 1rem;
+        min-height: auto;
+        overflow-y: visible;
+    }
+
+    .profile-section {
+        padding: 0.5rem;
+        margin: 0;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 0.5rem;
+    }
+
+    .name {
+        font-size: 1.3rem;
+        margin: 0.3rem 0;
+    }
+
+    .role {
+        font-size: 0.8rem;
+    }
+
+    .navigation {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem;
+        margin: 0.5rem 0;
+    }
+
+    .nav-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        margin: 0.1rem;
+    }
+
+    .hero {
+        padding: 1rem 0.5rem;
+        text-align: center;
+        min-height: auto;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .skills-card {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .skill-tag {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .social-links {
+        margin: 0.5rem 0;
+        gap: 0.5rem;
+    }
+
+    .social-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .download-section {
+        margin: 0.5rem 0;
+    }
+
+    .download-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust fixed elements for very small screens */
+    .profile-views {
+        position: fixed;
+        top: 5px;
+        right: 5px;
+        z-index: 1000;
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+
+    .theme-toggle {
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        z-index: 1000;
+    }
+
+    .color-theme-selector {
+        position: fixed;
+        top: 40px;
+        left: 5px;
+        z-index: 1000;
+    }
+}
+
+/* Extra small screen optimizations */
+@media (max-width: 480px) {
+    .container {
+        padding: 0;
+    }
+
+    .main-content {
+        padding: 0.5rem;
+    }
+
+    .sidebar {
+        padding: 0.5rem;
+    }
+
+    .profile-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .name {
+        font-size: 1.2rem;
+    }
+
+    .role {
+        font-size: 0.75rem;
+    }
+
+    .nav-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+
+    .skill-tag {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    .social-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        min-height: -webkit-fill-available;
+    }
+    
+    .main-content {
+        min-height: -webkit-fill-available;
+    }
+
+    body {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .sidebar {
+        height: auto;
+        padding: 0.5rem;
+    }
+
+    .profile-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .navigation {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .nav-btn {
+        padding: 0.4rem 0.6rem;
     }
 }
