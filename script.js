@@ -537,4 +537,46 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
         input.setAttribute('placeholder', ' ');
     });
+
+    // Touch event handling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Prevent default touch behaviors that might interfere
+        document.addEventListener('touchmove', function(e) {
+            if (e.target.closest('.contributions-graph, .leetcode-graph')) {
+                // Allow horizontal scrolling for graphs
+                return;
+            }
+            // For other elements, prevent default only if it's a vertical scroll
+            if (Math.abs(e.touches[0].clientX) > Math.abs(e.touches[0].clientY)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Ensure buttons are clickable
+        const buttons = document.querySelectorAll('.nav-btn, .social-btn, .project-link, .download-btn, .toggle-btn, .color-theme-btn');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            }, { passive: true });
+
+            button.addEventListener('touchend', function(e) {
+                e.stopPropagation();
+                // Trigger click event
+                this.click();
+            }, { passive: true });
+        });
+
+        // Fix for iOS Safari
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Ensure proper scrolling
+        const scrollableElements = document.querySelectorAll('.container, .main-content, .contributions-graph, .leetcode-graph');
+        scrollableElements.forEach(element => {
+            element.addEventListener('touchstart', function(e) {
+                this.style.overflow = 'auto';
+            }, { passive: true });
+        });
+    });
 }); 
